@@ -835,7 +835,7 @@ getGMLJSON();
 
 function getGMLJSON() {
     $.ajax({
-        url:"http://000000book.com/data/38982.json",
+        url:"http://000000book.com/data/39028.json",
         // url:"http://000000book.com/data/random.json",
         // url:"./sample.json",
         dataType:"jsonp",
@@ -870,9 +870,7 @@ function canvas_init() {
     scene = new THREE.Scene();
     renderer.setSize(WIDTH, HEIGHT);
 
-    camera.position.x = 400;
-    camera.position.y = 400;
-    camera.position.z = 700;
+    camera.position.set(0,0,500);
 
     $container.html("").append(renderer.domElement);
 
@@ -901,11 +899,11 @@ function renderGML() {
             for (var p in points) {
                 // i ++;
                 if (!prev_x && !prev_y) {
-                    prev_x = points[p]['x'];
-                    prev_y = points[p]['y'];
+                    prev_x = points[p]['x'] - 0.5;
+                    prev_y = points[p]['y'] - 0.5;
                 } else {
-                    var x = points[p]['x'],
-                        y = points[p]['y'],
+                    var x = points[p]['x'] - 0.5,
+                        y = points[p]['y'] - 0.5,
                         time = points[p]['time'] * 1000;
 
                         // console.info(prev_x,prev_y,x,y);
@@ -936,7 +934,7 @@ function renderGML() {
 
 // Block object that spans between two points.
 function Block(_x1,_y1,_x2,_y2,_time) {
-    var scaleVal = camera.position.z ;
+    var scaleVal = 300;
     this.x1 = _x1 * scaleVal;
     this.y1 = _y1 * scaleVal;
     this.x2 = _x2 * scaleVal;
@@ -959,17 +957,21 @@ function Block(_x1,_y1,_x2,_y2,_time) {
     this.cube = new THREE.Mesh(
         new THREE.CubeGeometry(this.width,this.height,this.depth,1,1,1, sphereMaterial),
         new THREE.MeshFaceMaterial());
-    this.cube.position.y = (this.x1 - this.x2) / 2 + this.x2;
-    this.cube.position.x = (this.y1 - this.y2) / 2 + this.y2;
-    this.cube.position.z = Z;
+    var x = (this.y1 - this.y2) / 2 + this.y2;
+    var y = (this.x1 - this.x2) / 2 + this.x2;
+    this.cube.position.set(x * 1.5,y * 1.5,Z);
+    // this.cube.position.x = (this.y1 - this.y2) / 2 + this.y2;
+    // this.cube.position.z = Z;
     // this.cube.rotation.x = Math.random() * .3;
     // this.cube.rotation.y = Math.random() * .3;
-    this.cube.rotation.x = Math.random() * Math.PI;
-    this.cube.rotation.y = Math.random() * Math.PI;
-    this.cube.rotation.z = -this.anglez;
+    // this.cube.rotation.x = Math.random() * Math.PI;
+    // this.cube.rotation.y = Math.random() * Math.PI;
+    // this.cube.rotation.z = -this.anglez;
+    this.cube.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, -this.anglez);
 
     Z += 0.1;
     // camera.position.z += 1;
+    camera.lookAt(x,y,Z);
 }
 
 
