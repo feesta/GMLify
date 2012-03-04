@@ -1,0 +1,1 @@
+javascript:(function(){my_script=document.createElement('SCRIPT');my_script.type='text/javascript';my_script.src='http://localhost/~jeff/hackday/GMLify/gmlify.js';document.getElementsByTagName('head')[0].appendChild(my_script);})();
