@@ -962,10 +962,10 @@ function Block(_x1,_y1,_x2,_y2,_time) {
     this.cube.position.y = (this.x1 - this.x2) / 2 + this.x2;
     this.cube.position.x = (this.y1 - this.y2) / 2 + this.y2;
     this.cube.position.z = Z;
-    this.cube.rotation.x = Math.random() * .3;
-    this.cube.rotation.y = Math.random() * .3;
-    // this.cube.rotation.x = Math.random() * Math.PI;
-    // this.cube.rotation.y = Math.random() * Math.PI;
+    // this.cube.rotation.x = Math.random() * .3;
+    // this.cube.rotation.y = Math.random() * .3;
+    this.cube.rotation.x = Math.random() * Math.PI;
+    this.cube.rotation.y = Math.random() * Math.PI;
     this.cube.rotation.z = -this.anglez;
 
     Z += 0.1;
