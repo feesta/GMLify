@@ -1,0 +1,84 @@
+{
+    "image_file_name": "upload.jpg",
+    "gml_uniquekey": "471b39ae53600bd748c3964a06dcca4c01020b1d",
+    "created_at": "2012-03-04T00:04:38Z",
+    "image_file_size": 50766,
+    "gml": {
+        "tag": {
+            "header": {
+                "client": {
+                    "name": "Fat Tag - Katsu Edition",
+                    "username": "FatTag",
+                    "uniqueKey": "471b39ae53600bd748c3964a06dcca4c01020b1d",
+                    "version": "1.0",
+                    "keywords": "fattag,fa"
+                }
+            },
+            "environment": {
+                "up": {
+                    "x": "1",
+                    "y": "0",
+                    "z": "0"
+                },
+                "screenBounds": {
+                    "x": "480",
+                    "y": "320",
+                    "z": "18.000000"
+                }
+            },
+            "drawing": {
+                "stroke": [
+                    {
+                        "pt": [
+                            {
+                                "x": "0",
+                                "y": "0",
+                                "z": "0.000000",
+                                "time": "0.000000"
+                            },
+                            {
+                                "x": "0",
+                                "y": "1.5",
+                                "z": "0.000000",
+                                "time": "0.020000"
+                            },
+                            {
+                                "x": "1",
+                                "y": "1.5",
+                                "z": "0.000000",
+                                "time": "0.032000"
+                            },
+                            {
+                                "x": "2",
+                                "y": "0",
+                                "z": "0.000000",
+                                "time": "7.088000"
+                            },
+                            {
+                                "x": "0",
+                                "y": "0",
+                                "z": "0.000000",
+                                "time": "7.108000"
+                            },
+                            {
+                                "x": "1",
+                                "y": "1",
+                                "z": "0.000000",
+                                "time": "7.108000"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "spec": "0.1b"
+    },
+    "updated_at": "2012-03-04T00:04:38Z",
+    "gml_keywords": "fattag,fa",
+    "gml_application": "Fat Tag - Katsu Edition",
+    "image_content_type": "application/octet-stream",
+    "gml_username": "FatTag",
+    "id": 38982,
+    "gml_uniquekey_hash": "8f301e7b020d1be7c5a332185c0fd0900587bc97",
+    "image_updated_at": "2012-03-04T00:04:37Z"
+}
