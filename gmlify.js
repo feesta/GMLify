@@ -53,13 +53,8 @@ function tryReady(time_elapsed) {
 
 function getGMLJSON() {
     $.ajax({
-<<<<<<< HEAD
         // url:"http://000000book.com/data/39027.json",
         url:"http://000000book.com/data/random.json",
-=======
-        url:"http://000000book.com/data/39028.json",
-        // url:"http://000000book.com/data/random.json",
->>>>>>> 6296717ffe4ac65ec32613b17109c8746e6388e6
         // url:"./sample.json",
         dataType:"jsonp",
         success:function(data){
