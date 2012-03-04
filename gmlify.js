@@ -66,8 +66,9 @@ function getGMLJSON() {
                 strokes = data['gml']['tag']['drawing']['stroke'];
 
             }
-
-            console.info("GML downloaded");
+            if (strokes.length)
+                console.info("GML downloaded");
+            else getGMLJSON();
         }
     });
 }
