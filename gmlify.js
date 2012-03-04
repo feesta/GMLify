@@ -24,6 +24,19 @@ var Z = 0;
 function ready(){
 	// console.info($);
     // console.info($('a'));
+    $("<div id='gmlify_loader'>Downloading GML... please wait.</div>").css({
+        position:'fixed',
+        left:0,
+        top:0,
+        'font-size':18,
+        padding:10,
+        'font-family':'Helvetica',
+        'font-weight':'bold',
+        color:'black',
+        'background-color':'white',
+        'z-index':999999999999
+    }).appendTo("body");
+
 	$('a').click(function(){
 		var href = $(this).attr('href');
 	    console.info('a click: ' + href);
@@ -66,9 +79,10 @@ function getGMLJSON() {
                 strokes = data['gml']['tag']['drawing']['stroke'];
 
             }
-            if (strokes.length)
+            if (strokes.length > 0) {
                 console.info("GML downloaded");
-            else getGMLJSON();
+                $("#gmlify_loader").html('Click a link.');
+            } else getGMLJSON();
         }
     });
 }
@@ -148,7 +162,7 @@ function renderGML(callback) {
         console.info('GML not downloaded yet....');
     }
     // console.info(parseInt(last_time));
-    setTimeout(function(){callback();}, parseInt(last_time));
+    setTimeout(function(){callback();}, parseInt(last_time + 0.5));
 }
 
 
