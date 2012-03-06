@@ -43,8 +43,8 @@ function canvas_init() {
     $container = $('#gmlify_canvas');
 
 
-    renderer = new THREE.CanvasRenderer();
-    renderer.AA = false;
+    renderer = new THREE.WebGLRenderer();
+    // renderer.AA = true;
     camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
     scene = new THREE.Scene();
     renderer.setSize(WIDTH, HEIGHT);
