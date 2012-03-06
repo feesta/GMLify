@@ -17,10 +17,36 @@ window.bookmarklet = function(opts){fullFunc(opts)};
 window.bookmarklet({
  
     threejs:['https://raw.github.com/mrdoob/three.js/master/build/Three.js'],
-    js:['https://raw.github.com/feesta/GMLify/master/gmlify_3drender.js'],    
+    js:['./gmlify_3drender.js'],    
     ready:function(){
 		// The meat of your jQuery code goes here
-		$("body").html("Hello World");
+		// $("body").html("Hello World");
+	    $("<div id='gmlify_loader'>Downloading GML... please wait.</div>").css({
+	        position:'fixed',
+	        left:0,
+	        top:0,
+	        'font-size':18,
+	        padding:10,
+	        'font-family':'Helvetica',
+	        'font-weight':'bold',
+	        color:'black',
+	        'background-color':'white',
+	        'z-index':999999999999
+	    }).appendTo("body");
+
+		$('a').click(function(){
+			var href = $(this).attr('href');
+		    console.info('a click: ' + href);
+		    var callback = function(){
+		    	location.href = href;
+		    	// console.info('click');
+		    };
+		    renderGML(callback);
+		    return false;
+		});
+
+
+		getGMLJSON();
    	}
 })
  

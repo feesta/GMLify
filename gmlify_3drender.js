@@ -1,14 +1,14 @@
 
 // load libraries
-function loadScript(file) {
-	var head= document.getElementsByTagName('head')[0];
-	var script= document.createElement('script');
-	script.type= 'text/javascript';
-	script.src= file;
-	head.appendChild(script);
-}
-loadScript('http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js');
-loadScript('https://raw.github.com/mrdoob/three.js/master/build/Three.js');
+// function loadScript(file) {
+// 	var head= document.getElementsByTagName('head')[0];
+// 	var script= document.createElement('script');
+// 	script.type= 'text/javascript';
+// 	script.src= file;
+// 	head.appendChild(script);
+// }
+// loadScript('http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js');
+// loadScript('https://raw.github.com/mrdoob/three.js/master/build/Three.js');
 
 
 
@@ -52,18 +52,18 @@ function ready(){
 	getGMLJSON();
 }
 
-tryReady(0);
-function tryReady(time_elapsed) {
-  	// Continually polls to see if jQuery is loaded.
-	if (typeof $ == "undefined" && typeof THREE == "undefined") { // if jQuery isn't loaded yet...
-	    if (time_elapsed <= 5000) { // and we havn't given up trying...
- 	    	setTimeout("tryReady(" + (time_elapsed + 200) + ")", 200); // set a timer to check again in 200 ms.
-    	}
-	} else {
-		console.info('jQuery ready.');
-		ready();
-	}
-}
+// tryReady(0);
+// function tryReady(time_elapsed) {
+//   	// Continually polls to see if jQuery is loaded.
+// 	if (typeof $ == "undefined" && typeof THREE == "undefined") { // if jQuery isn't loaded yet...
+// 	    if (time_elapsed <= 5000) { // and we havn't given up trying...
+//  	    	setTimeout("tryReady(" + (time_elapsed + 200) + ")", 200); // set a timer to check again in 200 ms.
+//     	}
+// 	} else {
+// 		console.info('jQuery ready.');
+// 		ready();
+// 	}
+// }
 
 function getGMLJSON() {
     $.ajax({
