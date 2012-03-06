@@ -1,18 +1,7 @@
 
-// load libraries
-function loadScript(file) {
-	var head= document.getElementsByTagName('head')[0];
-	var script= document.createElement('script');
-	script.type= 'text/javascript';
-	script.src= file;
-	head.appendChild(script);
-}
-loadScript('http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js');
-loadScript('https://raw.github.com/mrdoob/three.js/master/build/Three.js');
-
-
-
-// JS for GMLify
+// JS for GMLify 
+// by Feesta
+// for the Creator's Project/GAFFTA Art Hackday
 
 var strokes = [];
 var $container,
@@ -21,51 +10,8 @@ var $container,
     scene;
 var Z = 0;
 
-function ready(){
-	// console.info($);
-    // console.info($('a'));
-    $("<div id='gmlify_loader'>Downloading GML... please wait.</div>").css({
-        position:'fixed',
-        left:0,
-        top:0,
-        'font-size':18,
-        padding:10,
-        'font-family':'Helvetica',
-        'font-weight':'bold',
-        color:'black',
-        'background-color':'white',
-        'z-index':999999999999
-    }).appendTo("body");
 
-	$('a').click(function(){
-		var href = $(this).attr('href');
-	    console.info('a click: ' + href);
-	    var callback = function(){
-	    	location.href = href;
-	    	// console.info('click');
-	    };
-	    renderGML(callback);
-	    return false;
-	});
-
-
-	getGMLJSON();
-}
-
-tryReady(0);
-function tryReady(time_elapsed) {
-  	// Continually polls to see if jQuery is loaded.
-	if (typeof $ == "undefined" && typeof THREE == "undefined") { // if jQuery isn't loaded yet...
-	    if (time_elapsed <= 5000) { // and we havn't given up trying...
- 	    	setTimeout("tryReady(" + (time_elapsed + 200) + ")", 200); // set a timer to check again in 200 ms.
-    	}
-	} else {
-		console.info('jQuery ready.');
-		ready();
-	}
-}
-
-function getGMLJSON() {
+function getGMLJSON(callback) {
     $.ajax({
         // url:"http://000000book.com/data/39027.json",
         url:"http://000000book.com/data/random.json",
@@ -80,9 +26,8 @@ function getGMLJSON() {
 
             }
             if (strokes.length > 0) {
-                console.info("GML downloaded");
-                $("#gmlify_loader").html('Click a link.');
-            } else getGMLJSON();
+                callback();
+            } else getGMLJSON(callback);
         }
     });
 }
@@ -98,8 +43,7 @@ function canvas_init() {
     $container = $('#gmlify_canvas');
 
 
-    renderer = new THREE.CanvasRenderer();
-    renderer.AA = false;
+    renderer = new THREE.WebGLRenderer({antialias: true});
     camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
     scene = new THREE.Scene();
     renderer.setSize(WIDTH, HEIGHT);
@@ -151,8 +95,6 @@ function renderGML(callback) {
                         prev_x = x;
                         prev_y = y;
 
-                        // console.info("time: " + time);
-
                         if (time) last_time = time;
                 }
             }
@@ -161,7 +103,6 @@ function renderGML(callback) {
     } else {
         console.info('GML not downloaded yet....');
     }
-    // console.info(parseInt(last_time));
     setTimeout(function(){callback();}, parseInt(last_time + 0.5));
 }
 
