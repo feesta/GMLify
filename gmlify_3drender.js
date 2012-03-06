@@ -27,7 +27,7 @@ function getGMLJSON(callback) {
             }
             if (strokes.length > 0) {
                 callback();
-            } else getGMLJSON();
+            } else getGMLJSON(callback);
         }
     });
 }
