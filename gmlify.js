@@ -17,7 +17,7 @@ window.bookmarklet = function(opts){fullFunc(opts)};
 window.bookmarklet({
  
     threejs:['https://raw.github.com/mrdoob/three.js/master/build/Three.js'],
-    js:['./gmlify_3drender.js'],    
+    js:['https://raw.github.com/feesta/GMLify/master/gmlify_3drender.js'],    
     ready:function(){
 		// The meat of your jQuery code goes here
 		// $("body").html("Hello World");
