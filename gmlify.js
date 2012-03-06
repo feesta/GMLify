@@ -10,17 +10,16 @@
  * as defined here: http://creativecommons.org/licenses/by/3.0/
  *
  */
+
+
+//GMLify: this helper script loads jQuery, THREE.js and our main JS.
  
 window.bookmarklet = function(opts){fullFunc(opts)};
- 
-// These are the styles, scripts and callbacks we include in our bookmarklet:
 window.bookmarklet({
  
-    threejs:['https://raw.github.com/mrdoob/three.js/master/build/Three.js'],
+    css:[],
     js:['https://raw.github.com/feesta/GMLify/master/gmlify_3drender.js','https://raw.github.com/mrdoob/three.js/master/build/Three.js'],    
     ready:function(){
-		// The meat of your jQuery code goes here
-		// $("body").html("Hello World");
 	    $("<div id='gmlify_loader'>Downloading GML... please wait.</div>").css({
 	        position:'fixed',
 	        left:0,
@@ -39,7 +38,6 @@ window.bookmarklet({
 		    console.info('a click: ' + href);
 		    var callback = function(){
 		    	location.href = href;
-		    	// console.info('click');
 		    };
 		    renderGML(callback);
 		    return false;
@@ -50,31 +48,4 @@ window.bookmarklet({
    	}
 })
  
-function fullFunc(a){
-	function d(b){
-		if(b.length===0){
-			a.ready();
-			return false
-		}
-		$.getScript(b[0],function(){
-			d(b.slice(1))
-		})
-	}
-	function e(b){
-		$.each(b,function(c,f){
-			$("<link>").attr({href:f,rel:"stylesheet"}).appendTo("head")
-		})
-	}
-	a.jqpath="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js";
-	(function(b){
-		var c=document.createElement("script");
-		c.type="text/javascript";
-		c.src=b;
-		c.onload=function(){
-			// d(a.threejs);
-			d(a.js)
-		};
-		document.body.appendChild(c)
-	})
-	(a.jqpath)
-};
+function fullFunc(a){function d(b){if(b.length===0){a.ready();return false}$.getScript(b[0],function(){d(b.slice(1))})}function e(b){$.each(b,function(c,f){$("<link>").attr({href:f,rel:"stylesheet"}).appendTo("head")})}a.jqpath="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js";(function(b){var c=document.createElement("script");c.type="text/javascript";c.src=b;c.onload=function(){d(a.js)};document.body.appendChild(c)})(a.jqpath)};
