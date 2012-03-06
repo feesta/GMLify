@@ -11,7 +11,7 @@ var $container,
 var Z = 0;
 
 
-function getGMLJSON() {
+function getGMLJSON(callback) {
     $.ajax({
         // url:"http://000000book.com/data/39027.json",
         url:"http://000000book.com/data/random.json",
@@ -26,8 +26,7 @@ function getGMLJSON() {
 
             }
             if (strokes.length > 0) {
-                console.info("GML downloaded");
-                $("#gmlify_loader").html('Click a link.');
+                callback();
             } else getGMLJSON();
         }
     });

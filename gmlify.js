@@ -44,7 +44,10 @@ window.bookmarklet({
 		});
 
 
-		getGMLJSON();
+		getGMLJSON(function(){
+            console.info("GML downloaded");
+	        $("#gmlify_loader").html('Click a link.');
+		});
    	}
 })
  
