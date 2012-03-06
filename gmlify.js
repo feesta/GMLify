@@ -17,7 +17,7 @@ window.bookmarklet = function(opts){fullFunc(opts)};
 window.bookmarklet({
  
     threejs:['https://raw.github.com/mrdoob/three.js/master/build/Three.js'],
-    js:['https://raw.github.com/feesta/GMLify/master/gmlify_3drender.js'],    
+    js:['https://raw.github.com/feesta/GMLify/master/gmlify_3drender.js','https://raw.github.com/mrdoob/three.js/master/build/Three.js'],    
     ready:function(){
 		// The meat of your jQuery code goes here
 		// $("body").html("Hello World");
@@ -50,4 +50,31 @@ window.bookmarklet({
    	}
 })
  
-function fullFunc(a){function d(b){if(b.length===0){a.ready();return false}$.getScript(b[0],function(){d(b.slice(1))})}function e(b){$.each(b,function(c,f){$("<link>").attr({href:f,rel:"stylesheet"}).appendTo("head")})}a.jqpath="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js";(function(b){var c=document.createElement("script");c.type="text/javascript";c.src=b;c.onload=function(){e(a.threejs);d(a.js)};document.body.appendChild(c)})(a.jqpath)};
+function fullFunc(a){
+	function d(b){
+		if(b.length===0){
+			a.ready();
+			return false
+		}
+		$.getScript(b[0],function(){
+			d(b.slice(1))
+		})
+	}
+	function e(b){
+		$.each(b,function(c,f){
+			$("<link>").attr({href:f,rel:"stylesheet"}).appendTo("head")
+		})
+	}
+	a.jqpath="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js";
+	(function(b){
+		var c=document.createElement("script");
+		c.type="text/javascript";
+		c.src=b;
+		c.onload=function(){
+			// d(a.threejs);
+			d(a.js)
+		};
+		document.body.appendChild(c)
+	})
+	(a.jqpath)
+};
